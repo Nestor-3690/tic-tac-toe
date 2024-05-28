@@ -10,7 +10,7 @@ function Gameboard() {
     return { getBoard };
 }
 
-/* function Square() {
+function Square() {
     let value = 0;
     const getValue = () => value;
 
@@ -19,7 +19,7 @@ function Gameboard() {
     }
 
     return { getValue, changeValue };
-} */
+}
 
 function Players(playerOneName = "Player 1", playerTwoName = "Player 2") {
     const createPlayers = [
