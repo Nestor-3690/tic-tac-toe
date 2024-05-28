@@ -7,7 +7,15 @@ function Gameboard() {
 
     const getBoard = board;
 
-    return { getBoard };
+    const gameWon = () => {
+        if ((board[0].getValue() === board[3].getValue() === board[6].getValue() && board[0].getValue !== 0) || (board[1].getValue() === board[4].getValue() === board[7].getValue() && board[1].getValue !== 0) || (board[2].getValue() === board[5].getValue() === board[8].getValue() && board[2].getValue !== 0) || 
+        (board[0].getValue() === board[1].getValue() === board[2].getValue() && board[1].getValue !== 0) || (board[3].getValue() === board[4].getValue() === board[5].getValue() && board[3].getValue !== 0) || (board[6].getValue() === board[7].getValue() === board[8].getValue() && board[6].getValue !== 0) ||
+        (board[0].getValue() === board[4].getValue() === board[8].getValue() && board[0].getValue !== 0) || (board[6].getValue() === board[4].getValue() === board[2].getValue() && board[0].getValue !== 0)) {
+            return true;
+        } return false;
+    }
+
+    return { getBoard, gameWon };
 }
 
 function Square() {
