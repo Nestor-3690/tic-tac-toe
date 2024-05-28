@@ -51,3 +51,9 @@ function Players(playerOneName = "Player 1", playerTwoName = "Player 2") {
 
     return { createPlayers };
 }
+
+function GameController() {
+    const board = Gameboard();
+
+    const players = Players().createPlayers;
+}
