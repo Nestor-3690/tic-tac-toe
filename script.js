@@ -56,4 +56,14 @@ function GameController() {
     const board = Gameboard();
 
     const players = Players().createPlayers;
+
+    let turn = 1;
+    const changeTurn = () => {
+        turn = turn === 1 ? 2 : 1;
+        console.log(turn);
+    }
+
+    const getTurn = () => turn;
+
+    return { getTurn, changeTurn};
 }
