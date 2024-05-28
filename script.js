@@ -15,7 +15,15 @@ function Gameboard() {
         } return false;
     }
 
-    return { getBoard, gameWon };
+    const gameTie = () => {
+        for (let i = 0; i < 9; i++) {
+            if (board[i].getValue() === 0) {
+                return false;
+            }
+        } return true;
+    }
+
+    return { getBoard, gameWon, gameTie };
 }
 
 function Square() {
