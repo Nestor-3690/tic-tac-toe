@@ -68,7 +68,6 @@ function Players(playerOneName = "Player 1", playerTwoName = "Player 2") {
 }
 
 function GameController() {
-    const board = Gameboard();
 
     const players = Players().createPlayers;
 
@@ -80,20 +79,20 @@ function GameController() {
 
     const getTurn = () => turn;
 
-    const playRound = (choice) => {
+    const playRound = (choice, gameboard) => {
          const actualPlayer = getTurn();
 
-         if (board.squareChecker(players[actualPlayer - 1].marker, choice) === false) {
+         if (gameboard.squareChecker(players[actualPlayer - 1].marker, choice) === false) {
             return false;
          }
 
-         if (board.gameWon() === true) {
+         if (gameboard.gameWon() === true) {
             console.log(`${players[actualPlayer - 1].name} won!`);
-         } else if (board.gameTie() === true) {
+         } else if (gameboard.gameTie() === true) {
             console.log("The game is a tie!");
          } else {
             changeTurn();
-            console.log(board.getBoard());
+            console.log(gameboard.getBoard());
          }
     }
 
@@ -119,7 +118,7 @@ function DisplayGame() {
             squareUI.setAttribute("id", `${actualCount}`);
             squareUI.textContent = square;
             squareUI.addEventListener("click", () => {
-                game.playRound(actualCount);
+                game.playRound(actualCount, board);
                 printGameboard();
             });
             gameboardUI.append(squareUI);
