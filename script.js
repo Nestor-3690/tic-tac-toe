@@ -52,8 +52,9 @@ function Square() {
     return { getValue, changeValue };
 }
 
-function Players(playerOneName = "Player 1", playerTwoName = "Player 2") {
-    const createPlayers = [
+function Players() {
+
+    const createPlayers = (playerOneName, playerTwoName) => [
         {
             name: playerOneName,
             marker: "X"
@@ -64,14 +65,23 @@ function Players(playerOneName = "Player 1", playerTwoName = "Player 2") {
         }
     ];
 
-    return { createPlayers };
+    const setPlayersName = () => {
+        const buttonForm = document.querySelector("#players-button");
+        buttonForm.addEventListener("click", () => {
+            const player1 = player1name.value ? player1name.value : "Player 1";
+            const player2 = player2name.value ? player2name.value : "Player 2";
+            const initializedPlayers = createPlayers(player1, player2);
+            console.log(initializedPlayers);
+            DisplayGame(initializedPlayers);
+        })
+    }
+
+    setPlayersName();
 }
 
-function GameController() {
+function GameController(players) {
 
     const board = Gameboard();
-
-    const players = Players().createPlayers;
 
     let turn = 1;
     const changeTurn = () => {
@@ -101,9 +111,9 @@ function GameController() {
     return { getTurn, changeTurn, playRound, getBoard: board.getBoard};
 }
 
-function DisplayGame() {
+function DisplayGame(players) {
 
-    const game = GameController();
+    const game = GameController(players);
 
     const gameboardUI = document.querySelector("#gameboard");
 
@@ -131,4 +141,4 @@ function DisplayGame() {
     return { printGameboard };
 }
 
-const gameUI = DisplayGame();
+const setPlayers = Players();
