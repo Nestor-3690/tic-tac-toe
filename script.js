@@ -67,12 +67,16 @@ function Players() {
 
     const setPlayersName = () => {
         const startButton = document.querySelector("#start-button");
+        const restartButton = document.querySelector("#restart")
         startButton.addEventListener("click", () => {
             const player1 = player1name.value ? player1name.value : "Player 1";
             const player2 = player2name.value ? player2name.value : "Player 2";
             const initializedPlayers = createPlayers(player1, player2);
             console.log(initializedPlayers);
             DisplayGame(initializedPlayers);
+            restartButton.addEventListener("click", () => {
+                DisplayGame(initializedPlayers);
+            })
         })
     }
 
