@@ -72,8 +72,6 @@ function GameController() {
 
     const players = Players().createPlayers;
 
-    const display = DisplayGame();
-
     let turn = 1;
     const changeTurn = () => {
         turn = turn === 1 ? 2 : 1;
@@ -96,31 +94,38 @@ function GameController() {
          } else {
             changeTurn();
             console.log(board.getBoard());
-            display.printGameboard(board);
          }
     }
-
-    display.printGameboard(board);
 
     return { getTurn, changeTurn, playRound};
 }
 
 function DisplayGame() {
 
+    const game = GameController();
+
+    const board = Gameboard();
+
     const gameboardUI = document.querySelector("#gameboard");
 
-    const printGameboard = (actualBoard) => {
+    const printGameboard = () => {
         gameboardUI.textContent = '';
-        const gameboard = actualBoard.getBoard();
+        const gameboard = board.getBoard();
+        let count = 0;
         gameboard.forEach((square) => {
+            const actualCount = count;
             const squareUI = document.createElement("div");
             squareUI.setAttribute("class", "square");
+            squareUI.setAttribute("id", `${actualCount}`);
             squareUI.textContent = square;
             gameboardUI.append(squareUI);
+            count++;
         })
     }
+
+    printGameboard();
 
     return { printGameboard };
 }
 
-const game = GameController();
+const gameUI = DisplayGame();
