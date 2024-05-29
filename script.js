@@ -7,6 +7,13 @@ function Gameboard() {
 
     const getBoard = () => board;
 
+    const squareChecker = (marker, square) => {
+        if (board[square].getValue() !== 0) {
+            return false
+        }
+        board[square].changeValue(marker);
+    }
+
     const gameWon = () => {
         if ((board[0].getValue() === board[3].getValue() === board[6].getValue() && board[0].getValue !== 0) || (board[1].getValue() === board[4].getValue() === board[7].getValue() && board[1].getValue !== 0) || (board[2].getValue() === board[5].getValue() === board[8].getValue() && board[2].getValue !== 0) || 
         (board[0].getValue() === board[1].getValue() === board[2].getValue() && board[1].getValue !== 0) || (board[3].getValue() === board[4].getValue() === board[5].getValue() && board[3].getValue !== 0) || (board[6].getValue() === board[7].getValue() === board[8].getValue() && board[6].getValue !== 0) ||
@@ -23,15 +30,15 @@ function Gameboard() {
         } return true;
     }
 
-    return { getBoard, gameWon, gameTie };
+    return { getBoard, squareChecker, gameWon, gameTie };
 }
 
 function Square() {
     let value = 0;
     const getValue = () => value;
 
-    const changeValue = (player) => {
-        value = player.marker;
+    const changeValue = (mark) => {
+        value = mark;
     }
 
     return { getValue, changeValue };
@@ -68,7 +75,7 @@ function GameController() {
     const playRound = (choice) => {
          const actualPlayer = getTurn();
 
-         /* function() */
+         squareChecker(players[turn - 1].marker, choice);
 
          if (gameWon() === true) {
             console.log(`${players[turn - 1].name} won!`);
