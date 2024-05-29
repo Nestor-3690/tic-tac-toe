@@ -86,7 +86,6 @@ function Players() {
 function GameController(players) {
 
     const board = Gameboard();
-
     let turn = 1;
     const changeTurn = () => {
         turn = turn === 1 ? 2 : 1;
@@ -95,7 +94,12 @@ function GameController(players) {
 
     const getTurn = () => turn;
 
+    const results = document.querySelector("#results");
+
     const playRound = (choice) => {
+        if (board.gameWon() === true) {
+            return false;
+        }
          const actualPlayer = getTurn();
 
          if (board.squareChecker(players[actualPlayer - 1].marker, choice) === false) {
@@ -103,9 +107,9 @@ function GameController(players) {
          }
 
          if (board.gameWon() === true) {
-            console.log(`${players[actualPlayer - 1].name} won!`);
+            results.textContent = `${players[actualPlayer - 1].name} won!`;
          } else if (board.gameTie() === true) {
-            console.log("The game is a tie!");
+            results.textContent = "The game is a tie!";
          } else {
             changeTurn();
             console.log(board.getBoard());
