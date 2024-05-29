@@ -69,6 +69,8 @@ function Players(playerOneName = "Player 1", playerTwoName = "Player 2") {
 
 function GameController() {
 
+    const board = Gameboard();
+
     const players = Players().createPlayers;
 
     let turn = 1;
@@ -79,37 +81,35 @@ function GameController() {
 
     const getTurn = () => turn;
 
-    const playRound = (choice, gameboard) => {
+    const playRound = (choice) => {
          const actualPlayer = getTurn();
 
-         if (gameboard.squareChecker(players[actualPlayer - 1].marker, choice) === false) {
+         if (board.squareChecker(players[actualPlayer - 1].marker, choice) === false) {
             return false;
          }
 
-         if (gameboard.gameWon() === true) {
+         if (board.gameWon() === true) {
             console.log(`${players[actualPlayer - 1].name} won!`);
-         } else if (gameboard.gameTie() === true) {
+         } else if (board.gameTie() === true) {
             console.log("The game is a tie!");
          } else {
             changeTurn();
-            console.log(gameboard.getBoard());
+            console.log(board.getBoard());
          }
     }
 
-    return { getTurn, changeTurn, playRound};
+    return { getTurn, changeTurn, playRound, getBoard: board.getBoard};
 }
 
 function DisplayGame() {
 
     const game = GameController();
 
-    const board = Gameboard();
-
     const gameboardUI = document.querySelector("#gameboard");
 
     const printGameboard = () => {
         gameboardUI.textContent = '';
-        const gameboard = board.getBoard();
+        const gameboard = game.getBoard();
         let count = 0;
         gameboard.forEach((square) => {
             const actualCount = count;
@@ -118,7 +118,7 @@ function DisplayGame() {
             squareUI.setAttribute("id", `${actualCount}`);
             squareUI.textContent = square;
             squareUI.addEventListener("click", () => {
-                game.playRound(actualCount, board);
+                game.playRound(actualCount);
                 printGameboard();
             });
             gameboardUI.append(squareUI);
