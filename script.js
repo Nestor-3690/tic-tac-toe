@@ -100,4 +100,23 @@ function GameController() {
     return { getTurn, changeTurn, playRound};
 }
 
+function DisplayGame() {
+    const board = Gameboard();
+
+    const gameboardUI = document.querySelector("#gameboard");
+
+    const printGameboard = () => {
+        gameboardUI.textContent = '';
+        const gameboard = board.getBoard();
+        gameboard.forEach((square) => {
+            const squareUI = document.createElement("div");
+            squareUI.setAttribute("class", "square");
+            squareUI.textContent = square;
+            gameboardUI.append(squareUI);
+        })
+    }
+
+    return { printGameboard };
+}
+
 const game = GameController();
