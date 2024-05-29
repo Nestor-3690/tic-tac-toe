@@ -75,7 +75,9 @@ function GameController() {
     const playRound = (choice) => {
          const actualPlayer = getTurn();
 
-         squareChecker(players[turn - 1].marker, choice);
+         if (squareChecker(players[turn - 1].marker, choice) === false) {
+            return false;
+         }
 
          if (gameWon() === true) {
             console.log(`${players[turn - 1].name} won!`);
@@ -86,5 +88,5 @@ function GameController() {
          }
     }
 
-    return { getTurn, changeTurn};
+    return { getTurn, changeTurn, playRound};
 }
