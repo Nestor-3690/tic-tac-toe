@@ -14,16 +14,16 @@ function Gameboard() {
     };
 
     const squareChecker = (marker, square) => {
-        if (board[square].getValue() !== 0) {
+        if (board[square].getValue() !== "") {
             return false
         }
         board[square].changeValue(marker);
     }
 
     const gameWon = () => {
-        if (board[0].getValue() === board[3].getValue() && board[3].getValue() === board[6].getValue() && board[0].getValue() !== 0 || board[1].getValue() === board[4].getValue() && board[4].getValue() === board[7].getValue() && board[1].getValue() !== 0 || board[2].getValue() === board[5].getValue() && board[5].getValue() === board[8].getValue() && board[2].getValue() !== 0 ||
-        board[0].getValue() === board[1].getValue() && board[1].getValue() === board[2].getValue() && board[0].getValue() !== 0 || board[3].getValue() === board[4].getValue() && board[4].getValue() === board[5].getValue() && board[3].getValue() !== 0 || board[6].getValue() === board[7].getValue() && board[7].getValue() === board[8].getValue() && board[6].getValue() !== 0 ||
-        board[0].getValue() === board[4].getValue() && board[4].getValue() === board[8].getValue() && board[0].getValue() !== 0 || board[6].getValue() === board[4].getValue() && board[4].getValue() === board[2].getValue() && board[6].getValue() !== 0) {
+        if (board[0].getValue() === board[3].getValue() && board[3].getValue() === board[6].getValue() && board[0].getValue() !== "" || board[1].getValue() === board[4].getValue() && board[4].getValue() === board[7].getValue() && board[1].getValue() !== "" || board[2].getValue() === board[5].getValue() && board[5].getValue() === board[8].getValue() && board[2].getValue() !== "" ||
+        board[0].getValue() === board[1].getValue() && board[1].getValue() === board[2].getValue() && board[0].getValue() !== "" || board[3].getValue() === board[4].getValue() && board[4].getValue() === board[5].getValue() && board[3].getValue() !== "" || board[6].getValue() === board[7].getValue() && board[7].getValue() === board[8].getValue() && board[6].getValue() !== "" ||
+        board[0].getValue() === board[4].getValue() && board[4].getValue() === board[8].getValue() && board[0].getValue() !== "" || board[6].getValue() === board[4].getValue() && board[4].getValue() === board[2].getValue() && board[6].getValue() !== "") {
             return true;
         } else {
             return false;
@@ -32,7 +32,7 @@ function Gameboard() {
 
     const gameTie = () => {
         for (let i = 0; i < 9; i++) {
-            if (board[i].getValue() === 0) {
+            if (board[i].getValue() === "") {
                 return false;
             }
         } return true;
@@ -42,7 +42,7 @@ function Gameboard() {
 }
 
 function Square() {
-    let value = 0;
+    let value = "";
     const getValue = () => value;
 
     const changeValue = (mark) => {
