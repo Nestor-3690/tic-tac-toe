@@ -66,8 +66,8 @@ function Players() {
     ];
 
     const setPlayersName = () => {
-        const buttonForm = document.querySelector("#players-button");
-        buttonForm.addEventListener("click", () => {
+        const startButton = document.querySelector("#start-button");
+        startButton.addEventListener("click", () => {
             const player1 = player1name.value ? player1name.value : "Player 1";
             const player2 = player2name.value ? player2name.value : "Player 2";
             const initializedPlayers = createPlayers(player1, player2);
