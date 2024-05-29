@@ -100,13 +100,15 @@ function GameController() {
          }
     }
 
+    display.printGameboard(board);
+
     return { getTurn, changeTurn, playRound};
 }
 
 function DisplayGame() {
 
     const gameboardUI = document.querySelector("#gameboard");
-    
+
     const printGameboard = (actualBoard) => {
         gameboardUI.textContent = '';
         const gameboard = actualBoard.getBoard();
