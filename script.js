@@ -118,6 +118,10 @@ function DisplayGame() {
             squareUI.setAttribute("class", "square");
             squareUI.setAttribute("id", `${actualCount}`);
             squareUI.textContent = square;
+            squareUI.addEventListener("click", () => {
+                game.playRound(actualCount);
+                printGameboard();
+            });
             gameboardUI.append(squareUI);
             count++;
         })
