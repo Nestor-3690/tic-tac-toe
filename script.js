@@ -5,7 +5,13 @@ function Gameboard() {
         board.push(Square());
     }
 
-    const getBoard = () => board;
+    const getBoard = () => {
+        let boardVisualize = [];
+        for (let i = 0; i < 9; i++) {
+            boardVisualize.push(board[i].getValue());
+        }
+        return boardVisualize;
+    };
 
     const squareChecker = (marker, square) => {
         if (board[square].getValue() !== 0) {
@@ -82,7 +88,7 @@ function GameController() {
          }
 
          if (board.gameWon() === true) {
-            console.log(`${actualPlayer.name} won!`);
+            console.log(`${players[actualPlayer - 1].name} won!`);
          } else if (board.gameTie() === true) {
             console.log("The game is a tie!");
          } else {
