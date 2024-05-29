@@ -65,5 +65,19 @@ function GameController() {
 
     const getTurn = () => turn;
 
+    const playRound = (choice) => {
+         const actualPlayer = getTurn();
+
+         /* function() */
+
+         if (gameWon() === true) {
+            console.log(`${players[turn - 1].name} won!`);
+         } else if (gameTie() === true) {
+            console.log("The game is a tie!");
+         } else {
+            changeTurn();
+         }
+    }
+
     return { getTurn, changeTurn};
 }
