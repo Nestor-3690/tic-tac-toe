@@ -72,6 +72,8 @@ function GameController() {
 
     const players = Players().createPlayers;
 
+    const display = DisplayGame();
+
     let turn = 1;
     const changeTurn = () => {
         turn = turn === 1 ? 2 : 1;
@@ -94,6 +96,7 @@ function GameController() {
          } else {
             changeTurn();
             console.log(board.getBoard());
+            display.printGameboard(board);
          }
     }
 
@@ -101,13 +104,12 @@ function GameController() {
 }
 
 function DisplayGame() {
-    const board = Gameboard();
 
     const gameboardUI = document.querySelector("#gameboard");
-
-    const printGameboard = () => {
+    
+    const printGameboard = (actualBoard) => {
         gameboardUI.textContent = '';
-        const gameboard = board.getBoard();
+        const gameboard = actualBoard.getBoard();
         gameboard.forEach((square) => {
             const squareUI = document.createElement("div");
             squareUI.setAttribute("class", "square");
