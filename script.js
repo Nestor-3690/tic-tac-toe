@@ -110,6 +110,8 @@ function DisplayGame() {
 
     const initPlayers = Players();
 
+    const form = document.querySelector("form");
+
     const results = document.querySelector("#results");
 
     const gameboardUI = document.querySelector("#gameboard");
@@ -124,6 +126,7 @@ function DisplayGame() {
             console.log(initializedPlayers);
             const game = GameController(initializedPlayers);
             printGameboard(game, initializedPlayers);
+            form.remove();
             restartButton.addEventListener("click", () => {
                 results.textContent = "";
                 printGameboard(game, initializedPlayers, "restart");
