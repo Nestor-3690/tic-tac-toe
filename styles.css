@@ -40,12 +40,12 @@ header {
 }
 
 .header-title {
-    font-size: 5.5rem;
+    font-size: 5rem;
     margin-bottom: 0.5rem;
 }
 
 .header-text {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
 }
 
 #game {
@@ -134,7 +134,7 @@ form {
 #restart {
     align-self: center;
     padding: 1rem 1.5rem;
-    font-size: 3rem;
+    font-size: 2.2rem;
 }
 
 aside {
@@ -153,5 +153,5 @@ aside {
 
 #results {
     margin-top: 1rem;
-    font-size: 5rem;
+    font-size: 4rem;
 }
