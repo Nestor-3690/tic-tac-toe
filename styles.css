@@ -12,6 +12,21 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+header {
+    text-align: center;
+    padding: 1rem;
+}
+
+.header-title {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.header-text {
+    font-size: 1.5rem;
+}
+
 #gameboard {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
