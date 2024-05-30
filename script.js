@@ -141,6 +141,7 @@ function DisplayGame() {
             printGameboard(game, initializedPlayers);
             form.remove();
             gameboardUI.style.display = "grid";
+            restartButton.style.display = "initial";
             restartButton.addEventListener("click", () => {
                 results.textContent = "";
                 printGameboard(game, initializedPlayers, "restart");
