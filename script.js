@@ -79,6 +79,8 @@ function GameController(players) {
 
     const getTurn = () => turn;
 
+    const player1Score = document.querySelector("#p1scoreUI")
+    const player2Score = document.querySelector("#p2scoreUI")
     const results = document.querySelector("#results");
 
     const playRound = (choice) => {
@@ -93,6 +95,11 @@ function GameController(players) {
 
          if (board.gameWon() === true) {
             results.textContent = `${players[actualPlayer - 1].name} won!`;
+            if (actualPlayer === 1) {
+                player1Score.textContent = Number(player1Score.textContent) + 1;
+            } else {
+                player2Score.textContent = Number(player2Score.textContent) + 1;
+            }
          } else if (board.gameTie() === true) {
             results.textContent = "The game is a tie!";
          } else {
@@ -111,7 +118,8 @@ function DisplayGame() {
     const initPlayers = Players();
 
     const form = document.querySelector("form");
-
+    const player1Name = document.querySelector("#p1nameUI")
+    const player2Name = document.querySelector("#p2nameUI")
     const results = document.querySelector("#results");
 
     const gameboardUI = document.querySelector("#gameboard");
@@ -124,6 +132,8 @@ function DisplayGame() {
             const player2 = player2name.value ? player2name.value : "Player 2";
             const initializedPlayers = initPlayers.createPlayers(player1, player2);
             console.log(initializedPlayers);
+            player1Name.textContent = player1;
+            player2Name.textContent = player2;
             const game = GameController(initializedPlayers);
             printGameboard(game, initializedPlayers);
             form.remove();
