@@ -101,7 +101,7 @@ function GameController(players) {
          }
     }
 
-    return { getTurn, changeTurn, playRound, getBoard: board.getBoard};
+    return { playRound, getBoard: board.getBoard};
 }
 
 function DisplayGame() {
@@ -151,8 +151,6 @@ function DisplayGame() {
     }
 
     setGameStart();
-
-    return { printGameboard };
 }
 
 const initialize = DisplayGame();
