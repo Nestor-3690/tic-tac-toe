@@ -73,10 +73,9 @@ form {
 
 #gameboard {
     font-family: "LilitaOne";
-    display: grid;
+    display: none;
     grid-template-columns: 1fr 1fr 1fr;
     font-size: calc(var(--gameboard-size) / 4);
-    overflow: hidden;
     height: var(--gameboard-size);
     width: var(--gameboard-size);
 }

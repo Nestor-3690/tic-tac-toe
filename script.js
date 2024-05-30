@@ -140,6 +140,7 @@ function DisplayGame() {
             const game = GameController(initializedPlayers);
             printGameboard(game, initializedPlayers);
             form.remove();
+            gameboardUI.style.display = "grid";
             restartButton.addEventListener("click", () => {
                 results.textContent = "";
                 printGameboard(game, initializedPlayers, "restart");
