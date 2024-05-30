@@ -140,7 +140,7 @@ function DisplayGame() {
         let count = 0;
         gameboard.forEach((square) => {
             const actualCount = count;
-            const squareUI = document.createElement("div");
+            const squareUI = document.createElement("button");
             squareUI.setAttribute("class", "square");
             squareUI.setAttribute("id", `${actualCount}`);
             squareUI.textContent = square;
