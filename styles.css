@@ -2,6 +2,8 @@
 
 :root {
     font-size: 62.5%;
+
+    --gameboard-size: 600px;;
 }
 
 body {
@@ -11,10 +13,14 @@ body {
 #gameboard {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    height: 75vh;
-    width: 75vh;
+    font-size: 5rem;
+    overflow: hidden;
+    height: var(--gameboard-size);
+    width: var(--gameboard-size);
 }
 
 #gameboard > * {
     border: 3px solid white;
+    min-height: calc(var(--gameboard-size) / 3);
+    max-height: calc((var(--gameboard-size) / 3));
 }
