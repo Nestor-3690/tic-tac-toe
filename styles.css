@@ -20,7 +20,45 @@ body {
 }
 
 #gameboard > * {
-    border: 3px solid white;
+    background-color: black;
+    color: white;
+    border: 5px solid white;
     min-height: calc(var(--gameboard-size) / 3);
     max-height: calc((var(--gameboard-size) / 3));
+}
+
+#gameboard button:nth-child(1) {
+    border-top: none;
+    border-left: none;
+}
+
+#gameboard button:nth-child(2) {
+    border-top: none;
+}
+
+#gameboard button:nth-child(3) {
+    border-top: none;
+    border-right: none;
+}
+
+#gameboard button:nth-child(4) {
+    border-left: none;
+}
+
+#gameboard button:nth-child(6) {
+    border-right: none;
+}
+
+#gameboard button:nth-child(7) {
+    border-bottom: none;
+    border-left: none;
+}
+
+#gameboard button:nth-child(8) {
+    border-bottom: none;
+}
+
+#gameboard button:nth-child(9) {
+    border-right: none;
+    border-bottom: none;
 }
