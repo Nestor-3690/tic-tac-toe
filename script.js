@@ -110,6 +110,8 @@ function DisplayGame() {
 
     const initPlayers = Players();
 
+    const results = document.querySelector("#results");
+
     const gameboardUI = document.querySelector("#gameboard");
 
     const setGameStart = () => {
@@ -123,6 +125,7 @@ function DisplayGame() {
             const game = GameController(initializedPlayers);
             printGameboard(game, initializedPlayers);
             restartButton.addEventListener("click", () => {
+                results.textContent = "";
                 printGameboard(game, initializedPlayers, "restart");
             })
         })
