@@ -65,22 +65,7 @@ function Players() {
         }
     ];
 
-    const setPlayersName = () => {
-        const startButton = document.querySelector("#start-button");
-        const restartButton = document.querySelector("#restart")
-        startButton.addEventListener("click", () => {
-            const player1 = player1name.value ? player1name.value : "Player 1";
-            const player2 = player2name.value ? player2name.value : "Player 2";
-            const initializedPlayers = createPlayers(player1, player2);
-            console.log(initializedPlayers);
-            DisplayGame(initializedPlayers);
-            restartButton.addEventListener("click", () => {
-                DisplayGame(initializedPlayers);
-            })
-        })
-    }
-
-    setPlayersName();
+    return { createPlayers }
 }
 
 function GameController(players) {
@@ -119,13 +104,34 @@ function GameController(players) {
     return { getTurn, changeTurn, playRound, getBoard: board.getBoard};
 }
 
-function DisplayGame(players) {
+function DisplayGame() {
 
-    const game = GameController(players);
+    /* const game = GameController(players); */
+
+    const initPlayers = Players();
 
     const gameboardUI = document.querySelector("#gameboard");
 
-    const printGameboard = () => {
+    const setGameStart = () => {
+        const startButton = document.querySelector("#start-button");
+        const restartButton = document.querySelector("#restart")
+        startButton.addEventListener("click", () => {
+            const player1 = player1name.value ? player1name.value : "Player 1";
+            const player2 = player2name.value ? player2name.value : "Player 2";
+            const initializedPlayers = initPlayers.createPlayers(player1, player2);
+            console.log(initializedPlayers);
+            const game = GameController(initializedPlayers);
+            printGameboard(game, initializedPlayers);
+            restartButton.addEventListener("click", () => {
+                printGameboard(game, initializedPlayers, "restart");
+            })
+        })
+    }
+
+    const printGameboard = (game, players, change) => {
+        if (change) {
+            game = GameController(players);
+        }
         gameboardUI.textContent = '';
         const gameboard = game.getBoard();
         let count = 0;
@@ -137,16 +143,16 @@ function DisplayGame(players) {
             squareUI.textContent = square;
             squareUI.addEventListener("click", () => {
                 game.playRound(actualCount);
-                printGameboard();
+                printGameboard(game, players);
             });
             gameboardUI.append(squareUI);
             count++;
         })
     }
 
-    printGameboard();
+    setGameStart();
 
     return { printGameboard };
 }
 
-const setPlayers = Players();
+const initialize = DisplayGame();
