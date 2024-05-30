@@ -97,8 +97,10 @@ function GameController(players) {
             results.textContent = `${players[actualPlayer - 1].name} won!`;
             if (actualPlayer === 1) {
                 player1Score.textContent = Number(player1Score.textContent) + 1;
+                player1Score.style.visibility = "visible";
             } else {
                 player2Score.textContent = Number(player2Score.textContent) + 1;
+                player2Score.style.visibility = "visible";
             }
          } else if (board.gameTie() === true) {
             results.textContent = "The game is a tie!";
@@ -134,6 +136,7 @@ function DisplayGame() {
             console.log(initializedPlayers);
             player1Name.textContent = player1;
             player2Name.textContent = player2;
+            player1Name.style.visibility = player2Name.style.visibility = "visible";
             const game = GameController(initializedPlayers);
             printGameboard(game, initializedPlayers);
             form.remove();

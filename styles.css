@@ -114,6 +114,7 @@ form {
 
 aside {
     font-size: 3rem;
+    visibility: hidden;
 }
 
 #player1, #player2 {
