@@ -64,7 +64,6 @@ form {
 
 #gameboard > * {
     background-color: black;
-    color: white;
     border: 5px solid white;
     min-height: calc(var(--gameboard-size) / 3);
     max-height: calc((var(--gameboard-size) / 3));
@@ -104,6 +103,14 @@ form {
 #gameboard button:nth-child(9) {
     border-right: none;
     border-bottom: none;
+}
+
+.red {
+    color: red;
+}
+
+.blue {
+    color: cyan;
 }
 
 #restart {

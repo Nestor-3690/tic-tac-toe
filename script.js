@@ -160,6 +160,11 @@ function DisplayGame() {
             squareUI.setAttribute("class", "square");
             squareUI.setAttribute("id", `${actualCount}`);
             squareUI.textContent = square;
+            if (squareUI.textContent === "X") {
+                squareUI.setAttribute("class", "blue");
+            } else if (squareUI.textContent === "O") {
+                squareUI.setAttribute("class", "red");
+            }
             squareUI.addEventListener("click", () => {
                 game.playRound(actualCount);
                 printGameboard(game, players);
