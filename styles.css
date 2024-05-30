@@ -132,3 +132,8 @@ aside {
     text-align: center;
     gap: 1.5rem;
 }
+
+#results {
+    margin-top: 1rem;
+    font-size: 3rem;
+}
