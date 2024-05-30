@@ -3,7 +3,7 @@
 :root {
     font-size: 62.5%;
 
-    --gameboard-size: 600px;;
+    --gameboard-size: 60rem;;
 }
 
 body {
@@ -13,7 +13,7 @@ body {
 #gameboard {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    font-size: 5rem;
+    font-size: calc(var(--gameboard-size) / 4);
     overflow: hidden;
     height: var(--gameboard-size);
     width: var(--gameboard-size);
